@@ -1,0 +1,407 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package teenpatti;
+
+import AppPackage.AnimationClass;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.geom.AffineTransform;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
+import java.io.File;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
+/**
+ *
+ * @author disha
+ */
+public class Game extends javax.swing.JFrame {
+AnimationClass ac = new AnimationClass();
+public static String theme = "table_2.png";
+    /**
+     * Creates new form NewJFrame
+     */
+    int j,k,l,z,x,c;
+    int r1,r2,r3;
+     
+    public Game() throws IOException {
+        initComponents();
+        Dimension screenSize,frameSize;
+        int x,y;
+        screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+        frameSize=getSize();
+        x=(screenSize.width-frameSize.width)/2;
+        y=(screenSize.height-frameSize.height)/2;
+        setLocation(x, y);
+        jPanel1.setBackground(new Color(0,0,0,100));
+        r1=random();
+        r2=random();
+        r3=random();
+        z=r1/13;k=r2/13;c=r3/13;
+        if(r1%13==0 )
+        {
+           j=13;
+        }
+        else
+        {
+            j=r1%13;
+        }
+         if(r2%13==0)
+        {
+            k=13;
+        }
+        else
+        {
+            k=r2%13;
+        }
+          if(r3%13==0)
+        {
+            l=13;
+        }
+        else
+        {
+            l=r3%13;
+        }
+        if(r1/13 == 0)
+        {
+            z=1;
+        }
+        else
+        {
+            z=r1/13;
+        }
+        if(r2/13 == 0)
+        {
+            x=1;
+        }
+        else
+        {
+            x=r2/13;
+        }
+        if(r3/13 == 0)
+        {
+            c=1;
+        }
+        else
+        {
+            c=r3/13;
+        }
+          //System.out.printf("z=%d,x=%d,c=%d,j=%d,k=%d,l=%d",z,x,c,j,k,l);
+        AffineTransform at = AffineTransform.getTranslateInstance(100, 100);
+        at.rotate(Math.toRadians(45));
+        ImageIcon img1 =new ImageIcon( new ImageIcon("table_2.png").getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT));
+        jLabel1.setIcon(img1);   
+          String img = String.format("F:\\study\\sem-4\\java\\TeenPatti\\cards\\%d_%d.png",(z),(z));
+        ImageIcon img2 = new ImageIcon(new ImageIcon(img).getImage().getScaledInstance(50,65,Image.SCALE_DEFAULT));
+       jLabel5.setIcon(img2);
+       String s2 = String.format("F:\\study\\sem-4\\java\\TeenPatti\\cards\\%d_%d.png",(x),(x));
+         ImageIcon img3 = new ImageIcon(new ImageIcon(s2).getImage().getScaledInstance(50,65,Image.SCALE_DEFAULT));
+       jLabel4.setIcon(img3);
+       
+       String s3 = String.format("F:\\study\\sem-4\\java\\TeenPatti\\cards\\%d_%d.png",(c),(c));
+         ImageIcon img4 = new ImageIcon(new ImageIcon(s3).getImage().getScaledInstance(50,65,Image.SCALE_DEFAULT));
+//     BufferedImage bf = lo
+//        Graphics2D g2d = null;
+//    g2d.drawImage(bf, at, null);
+        
+         rotateimage(45,this,s3);
+         //jLabel3.setIcon(img4);
+    //jLabel3.repaint();
+         ImageIcon imageicon1 = new ImageIcon(new ImageIcon("backd.png").getImage().getScaledInstance(35,50,Image.SCALE_DEFAULT));
+        jLabel7.setIcon(imageicon1);
+        jLabel8.setIcon(imageicon1);
+        jLabel9.setIcon(imageicon1);
+        //void lap(BufferedImage im){
+//         BufferedImage bf = new BufferedImage(
+//            
+//        );
+    
+       
+        
+    }
+   
+    public void rotateimage(double degree , ImageObserver o , String s){
+        ImageIcon img = new ImageIcon(s);
+        BufferedImage bf = new BufferedImage(img.getIconWidth(),img.getIconHeight(),BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = (Graphics2D)bf.getGraphics();
+        g2.rotate(Math.toRadians(degree),img.getIconWidth(),img.getIconHeight());
+        //g2.translate(50, 50);
+        g2.drawImage(bf, 0, 0, o);
+        jLabel3.setIcon(img);
+        
+    }
+     public static int random(){
+        Random r = new Random();
+      int ran = (r.nextInt(51)+1);
+      
+     
+      return ran;
+       
+    }
+     public ImageIcon img1(int a , int b ){
+         
+         String img3 = String.format("%d_%d.png",a,b);
+         ImageIcon imgic = new ImageIcon(new ImageIcon(img3).getImage().getScaledInstance(50,65,Image.SCALE_DEFAULT));
+         
+         return imgic;
+     }
+     
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1000, 700));
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                formComponentResized(evt);
+            }
+        });
+        getContentPane().setLayout(null);
+
+        jLabel6.setText("jLabel6");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(360, 10, 70, 80);
+
+        jLabel7.setText("jLabel7");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(350, 130, 35, 50);
+
+        jLabel8.setText("jLabel8");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(380, 130, 34, 50);
+
+        jLabel9.setText("jLabel9");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(410, 130, 34, 50);
+
+        jLabel11.setText("0");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(300, 210, 180, 50);
+
+        jLabel3.setText("jLabel3");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(290, 250, 80, 100);
+
+        jLabel4.setText("jLabel4");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(380, 290, 50, 70);
+
+        jLabel5.setText("jLabel5");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(440, 290, 50, 70);
+
+        jButton3.setBackground(new java.awt.Color(255, 153, 51));
+        jButton3.setText("+");
+        jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(260, 351, 70, 30);
+
+        jButton4.setBackground(new java.awt.Color(0, 153, 51));
+        jButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jButton4.setText("chaal");
+        jButton4.setBorder(null);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton4);
+        jButton4.setBounds(260, 430, 70, 30);
+
+        jButton5.setText("theme");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5);
+        jButton5.setBounds(650, 30, 90, 23);
+
+        jButton1.setBackground(new java.awt.Color(204, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Pack");
+        jButton1.setBorder(null);
+        getContentPane().add(jButton1);
+        jButton1.setBounds(450, 369, 70, 30);
+
+        jButton2.setBackground(new java.awt.Color(255, 153, 0));
+        jButton2.setText("Show");
+        jButton2.setBorder(null);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(450, 440, 50, 15);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(220, 340, 310, 150);
+
+        jLabel2.setText("jLabel2");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(350, 380, 80, 80);
+
+        jLabel10.setText("0");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(270, 400, 40, 20);
+
+        jLabel1.setPreferredSize(getSize());
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1980, 690);
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentResized
+        // TODO add your handling code here:
+       // jLabel1.resize(this.size());
+        ImageIcon img1 =new ImageIcon( new ImageIcon(theme).getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT));
+        jLabel1.setIcon(img1);
+        jLabel11.setLocation(((this.getWidth())/2), ((this.getHeight()/2)-50));
+        jLabel8.setLocation(((this.getWidth())/2), (((this.getHeight()/2)-130)));
+        jLabel9.setLocation(((this.getWidth()/2)-70), (((this.getHeight()/2)-130)));
+        jLabel7.setLocation(((this.getWidth()/2)+70), (((this.getHeight()/2)-130)));
+        jLabel2.setLocation(((this.getWidth())/2), (((this.getHeight()/2)+120)));
+        jLabel3.setLocation(((this.getWidth())/2), (((this.getHeight()/2)+20)));
+        jLabel4.setLocation(((this.getWidth()/2)-70), (((this.getHeight()/2)+20)));
+        jLabel5.setLocation(((this.getWidth()/2)+70), (((this.getHeight()/2)+20)));
+        jLabel10.setLocation(((this.getWidth())/2-90), (((this.getHeight()/2)+170)));
+        jButton4.setLocation(((this.getWidth())/2-90), (((this.getHeight()/2)+200)));
+        jPanel1.setLocation(((this.getWidth()/2)-120),((this.getHeight()/2))+120);
+        jButton3.setLocation(((this.getWidth())/2-90), (((this.getHeight()/2)+140)));
+        jButton1.setLocation(((this.getWidth())/2+90), (((this.getHeight()/2)+135)));
+        jButton2.setLocation(((this.getWidth())/2+90), (((this.getHeight()/2)+199)));
+        jLabel6.setLocation(((this.getWidth())/2), (((this.getHeight()/2)-250)));
+        
+    }//GEN-LAST:event_formComponentResized
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Player b=new Player(50,"jay");
+        b.setCard(13,2,12);
+        a.show(b);
+    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+      
+       jLabel10.setText(Player.amount+(Integer.parseInt(jLabel10.getText()))+ "");
+       jButton3.setEnabled(false);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+       // TODO add your handling code here
+        a.add(Integer.parseInt(jLabel10.getText()));
+        jLabel11.setText(a.pot+"");
+        jButton3.setEnabled(true);  
+    }//GEN-LAST:event_jButton4ActionPerformed
+boolean value = false;
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+        
+         if(value)
+         {
+             theme = "table2.png";
+             ImageIcon img =new ImageIcon( new ImageIcon(theme).getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT));
+             jLabel1.setIcon(img);
+             value = false;
+         }
+         else
+         {
+            theme = "table.png";
+        value= true; 
+         ImageIcon img1 =new ImageIcon( new ImageIcon(theme).getImage().getScaledInstance(this.getWidth(), this.getHeight(), Image.SCALE_DEFAULT));
+         jLabel1.setIcon(img1);
+         
+         }
+         
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    Player a=new Player(50,"disha");
+    public static void main(String args[]) throws Exception {
+           
+          System.out.println(InetAddress.getLocalHost());
+      //  a.setCard(r1,r2,r3);
+       
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new Game().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    // End of variables declaration//GEN-END:variables
+
+    private void paintComponent(ImageIcon img4) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
